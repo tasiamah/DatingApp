@@ -7,7 +7,6 @@ ssl/
 ssl/server.key
 ssl/server.cert
 server.cert
-server.key
 
 # User-specific files
 *.rsuser
