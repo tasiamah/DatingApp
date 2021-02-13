@@ -13,17 +13,12 @@
 /Users/ta/Desktop/projects/FullStack/DatingApp/API/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.dll
 /Users/ta/Desktop/projects/FullStack/DatingApp/API/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /Users/ta/Desktop/projects/FullStack/DatingApp/API/bin/Debug/net5.0/Microsoft.IdentityModel.Tokens.dll
-/Users/ta/Desktop/projects/FullStack/DatingApp/API/bin/Debug/net5.0/Microsoft.OpenApi.dll
-/Users/ta/Desktop/projects/FullStack/DatingApp/API/bin/Debug/net5.0/Swashbuckle.AspNetCore.Swagger.dll
-/Users/ta/Desktop/projects/FullStack/DatingApp/API/bin/Debug/net5.0/Swashbuckle.AspNetCore.SwaggerGen.dll
-/Users/ta/Desktop/projects/FullStack/DatingApp/API/bin/Debug/net5.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/ta/Desktop/projects/FullStack/DatingApp/API/bin/Debug/net5.0/System.IdentityModel.Tokens.Jwt.dll
 /Users/ta/Desktop/projects/FullStack/DatingApp/API/obj/Debug/net5.0/API.csprojAssemblyReference.cache
 /Users/ta/Desktop/projects/FullStack/DatingApp/API/obj/Debug/net5.0/API.GeneratedMSBuildEditorConfig.editorconfig
 /Users/ta/Desktop/projects/FullStack/DatingApp/API/obj/Debug/net5.0/API.AssemblyInfoInputs.cache
 /Users/ta/Desktop/projects/FullStack/DatingApp/API/obj/Debug/net5.0/API.AssemblyInfo.cs
 /Users/ta/Desktop/projects/FullStack/DatingApp/API/obj/Debug/net5.0/API.csproj.CoreCompileInputs.cache
-/Users/ta/Desktop/projects/FullStack/DatingApp/API/obj/Debug/net5.0/API.MvcApplicationPartsAssemblyInfo.cs
 /Users/ta/Desktop/projects/FullStack/DatingApp/API/obj/Debug/net5.0/API.MvcApplicationPartsAssemblyInfo.cache
 /Users/ta/Desktop/projects/FullStack/DatingApp/API/obj/Debug/net5.0/staticwebassets/API.StaticWebAssets.Manifest.cache
 /Users/ta/Desktop/projects/FullStack/DatingApp/API/obj/Debug/net5.0/staticwebassets/API.StaticWebAssets.xml
