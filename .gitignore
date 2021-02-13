@@ -3,7 +3,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-ssl
+ssl/
+ssl/server.key
+ssl/server.cert
+server.cert
+server.key
 
 # User-specific files
 *.rsuser
