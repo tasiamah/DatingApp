@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace API.Extensions
 {
-    public class ApplicationServiceExtensions
+    public static class ApplicationServiceExtensions
     {
         public static IServiceCollection AddApplicationService(this IServiceCollection services,
             IConfiguration config)

@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace API.Extensions
 {
-    public class IdentityServiceExtensions
+    public static class IdentityServiceExtensions
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
         {

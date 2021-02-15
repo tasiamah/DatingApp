@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
       .subscribe(response => this.users = response,
         error => console.log(error));
   }
-  getFirstUserIdsL () {
+  getFirstUserIds () {
     const users = this.getUsers();
     return users[1];
   }
