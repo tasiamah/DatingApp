@@ -5,9 +5,9 @@ import {Member} from "../_models/member";
 
 const httpOptions = {
   headers: new HttpHeaders({
-    Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('user')).token
+    Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('user'))?.token
   })
-};
+}
 
 @Injectable({
   providedIn: 'root'
