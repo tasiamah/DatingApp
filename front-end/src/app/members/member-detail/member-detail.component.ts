@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Member} from "../../_models/member";
+import {MembersService} from "../../_services/members.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-member-detail',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./member-detail.component.css']
 })
 export class MemberDetailComponent implements OnInit {
+  member: Member;
 
-  constructor() { }
+  constructor(private membersService: MembersService,
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.loadMember();
+    console.log(this.member);
   }
+
+  loadMember() {
+    this.membersService.getMember(this.route.snapshot.paramMap.get('username'))
+      .subscribe(member => this.member = member);
+  }
+
 
 }
