@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {AccountService} from "../../_services/account.service";
 import {Member} from "../../_models/member";
 import {User} from "../../_models/user";
 import {MembersService} from "../../_services/members.service";
 import {take} from "rxjs/operators";
 import {ToastrService} from "ngx-toastr";
-import {FormsModule} from "@angular/forms";
-import {NgForm} from '@angular/forms';
+import {NgForm} from "@angular/forms";
+
 
 @Component({
   selector: 'app-member-edit',
@@ -14,8 +14,14 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./member-edit.component.css']
 })
 export class MemberEditComponent implements OnInit {
+  @ViewChild('f') editFrom: NgForm;
   member: Member;
   user: User;
+  @HostListener('window:beforeunload', ['$event']) unloadNotification($event: any) {
+    if (this.editFrom.dirty) {
+      $event.returnValue = true;
+    }
+  }
 
   constructor(private accountService: AccountService,
               private memberService: MembersService,
@@ -33,5 +39,6 @@ export class MemberEditComponent implements OnInit {
   updateMember(){
     console.log(this.member);
     this.toastr.success('Profile updated successfully');
+    this.editFrom.reset(this.member);
   }
 }
