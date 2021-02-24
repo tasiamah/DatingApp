@@ -16,9 +16,9 @@ namespace API.Services
         {
             var acc = new Account
             (
-                config.Value.CloudName,
-                config.Value.ApiKey,
-                config.Value.ApiSecret
+                "tasiamah",
+                "742347327649628",
+                "2Osi0321HsMF5i18_QcaaO-nC4o"
             );
 
             _cloudinary = new Cloudinary(acc);
