@@ -16,7 +16,7 @@ import {NgxGalleryModule} from "@kolkov/ngx-gallery";
       positionClass: 'toast-bottom-right'
     }),
     TabsModule.forRoot(),
-    NgxGalleryModule
+    NgxGalleryModule,
   ],
   exports: [
     CommonModule,
