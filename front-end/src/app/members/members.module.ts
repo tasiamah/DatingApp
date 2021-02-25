@@ -7,6 +7,7 @@ import {MemberDetailComponent} from "./member-detail/member-detail.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../_modules/shared.module";
 import {RouterModule} from "@angular/router";
+import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 
 
 
@@ -15,7 +16,8 @@ import {RouterModule} from "@angular/router";
     MemberEditComponent,
     MemberCardComponent,
     MemberListComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    PhotoEditorComponent
   ],
   imports: [
     FormsModule,
