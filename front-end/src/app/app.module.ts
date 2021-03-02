@@ -22,6 +22,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {NgxSpinnerModule} from "ngx-spinner";
 import {LoadingInterceptor} from "./_interceptors/loading.interceptor";
 import { TextInputComponent } from './_forms/text-input/text-input.component';
+import { DateInputComponent } from './_forms/date-input/date-input.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TextInputComponent } from './_forms/text-input/text-input.component';
     TestErrorsComponent,
     NotFoundComponent,
     ServerErrorComponent,
-    TextInputComponent
+    TextInputComponent,
+    DateInputComponent
   ],
   imports: [
     BrowserModule,
