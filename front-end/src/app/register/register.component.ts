@@ -1,7 +1,7 @@
 import {Component, Input, OnInit, EventEmitter, Output} from '@angular/core';
 import {AccountService} from "../_services/account.service";
 import {ToastrService} from "ngx-toastr";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -23,11 +23,13 @@ export class RegisterComponent implements OnInit {
   initializeForm() {
     this.registerForm = new FormGroup({
       username: new FormControl('Hello', Validators.required),
-      password: new FormControl("",
+      password: new FormControl('',
         [Validators.required,
           Validators.minLength(4),
           Validators.maxLength(8)]),
-      confirmPassword: new FormControl('', Validators.required)
+      confirmPassword: new FormControl('',
+        [Validators.required,
+          this.matchValues('password')])
     });
   }
 
@@ -40,7 +42,12 @@ export class RegisterComponent implements OnInit {
     //   console.log(error);
     //   this.toastr.error(error.error);
     //   });
+  }
 
+  matchValues(matchTo: string): ValidatorFn {
+    return (control) => {
+      return control?.value === control?.parent?.controls[matchTo].value ? null : {isMatching: true};
+    };
   }
 
   cancel() {
