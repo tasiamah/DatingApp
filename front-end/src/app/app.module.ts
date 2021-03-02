@@ -21,6 +21,7 @@ import {MembersModule} from "./members/members.module";
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import {NgxSpinnerModule} from "ngx-spinner";
 import {LoadingInterceptor} from "./_interceptors/loading.interceptor";
+import { TextInputComponent } from './_forms/text-input/text-input.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {LoadingInterceptor} from "./_interceptors/loading.interceptor";
     MessagesComponent,
     TestErrorsComponent,
     NotFoundComponent,
-    ServerErrorComponent
+    ServerErrorComponent,
+    TextInputComponent
   ],
   imports: [
     BrowserModule,
