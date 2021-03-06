@@ -20,11 +20,13 @@ export class MembersService {
   }
 
   getMembers(userParams: UserParams) {
-    let params = this.getPaginationHeaders(userParams.pageNumber, userParams.pageSize);
+    let params = this.getPaginationHeaders(1, 5);
+
+    console.log(userParams.minAge);
 
     params = params.append('minAge', userParams.minAge.toString());
     params = params.append('maxAge', userParams.maxAge.toString());
-    params = params.append('gender', userParams.gender.toString());
+    params = params.append('gender', userParams.gender);
 
     return this.getPaginatedResult<Member[]>(this.baseUrl + 'users', params);
   }
