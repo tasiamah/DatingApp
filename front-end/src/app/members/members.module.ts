@@ -9,6 +9,7 @@ import {SharedModule} from "../_modules/shared.module";
 import {RouterModule} from "@angular/router";
 import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
 import {PaginationModule} from "ngx-bootstrap/pagination";
+import {TimeagoModule} from "ngx-timeago";
 
 
 
@@ -26,6 +27,7 @@ import {PaginationModule} from "ngx-bootstrap/pagination";
     SharedModule,
     RouterModule,
     PaginationModule.forRoot(),
+    TimeagoModule.forRoot(),
     ReactiveFormsModule
   ],
   exports: [
@@ -34,6 +36,7 @@ import {PaginationModule} from "ngx-bootstrap/pagination";
     SharedModule,
     RouterModule,
     PaginationModule,
+    TimeagoModule,
     ReactiveFormsModule
   ]
 })
