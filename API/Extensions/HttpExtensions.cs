@@ -13,7 +13,7 @@ namespace API.Extensions
 
             var options = new JsonSerializerOptions
             {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             };
             
             response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationHeader, options));

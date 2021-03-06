@@ -8,6 +8,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {SharedModule} from "../_modules/shared.module";
 import {RouterModule} from "@angular/router";
 import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
+import {PaginationModule} from "ngx-bootstrap/pagination";
 
 
 
@@ -24,6 +25,7 @@ import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
     CommonModule,
     SharedModule,
     RouterModule,
+    PaginationModule.forRoot(),
     ReactiveFormsModule
   ],
   exports: [
@@ -31,6 +33,7 @@ import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
     CommonModule,
     SharedModule,
     RouterModule,
+    PaginationModule,
     ReactiveFormsModule
   ]
 })
