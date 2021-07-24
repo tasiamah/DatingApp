@@ -1,7 +1,6 @@
 using System;
 using API.Extensions;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace DatingUnitTests.Extensions
 {
