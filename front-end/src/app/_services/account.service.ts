@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {map, tap} from "rxjs/operators";
-import {User} from "../_models/user";
-import {Observable, ReplaySubject} from "rxjs";
-import {environment} from "../../environments/environment";
+import {map} from 'rxjs/operators';
+import {User} from '../_models/user';
+import {Observable, ReplaySubject} from 'rxjs';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +26,12 @@ export class AccountService {
     );
   }
 
-  setCurrentUser(user: User) {
+  setCurrentUser(user: User): void {
     localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
   }
 
-  register(model: any) {
+  register(model: any): Observable<User> {
     return this.http.post(this.baseUrl + 'account/register', model).pipe(
       map((user: User) => {
         if (user) {
@@ -42,7 +42,7 @@ export class AccountService {
     );
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('user');
     this.currentUserSource.next(null);
   }
