@@ -2,10 +2,12 @@ import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {Member} from "../_models/member";
-import {Observable, of, pipe} from 'rxjs';
-import {map} from "rxjs/operators";
+import {Observable, of} from 'rxjs';
+import {map, take} from 'rxjs/operators';
 import {PaginatedResult} from "../_models/pagination";
 import {UserParams} from "../_models/userParams";
+import {AccountService} from './account.service';
+import {User} from '../_models/user';
 
 
 @Injectable({
@@ -15,8 +17,27 @@ export class MembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
   memberCache = new Map();
+  user: User;
+  userParams: UserParams;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private accountService: AccountService) {
+    this.accountService.currentUser$.pipe(take(1)).subscribe(user => {
+      this.user = user;
+      this.userParams = new UserParams(user);
+    });
+  }
+
+  getUserParams(): UserParams {
+    return this.userParams;
+  }
+
+  setUserParams(params: UserParams): void {
+    this.userParams = params;
+  }
+
+  resetUserParams(): UserParams {
+    this.userParams = new UserParams(this.user);
+    return this.userParams;
   }
 
   getMembers(userParams: UserParams): Observable<PaginatedResult<Member[]>>{
@@ -39,8 +60,14 @@ export class MembersService {
   }
 
   getMember(username: string): Observable<Member> {
-    const member = this.members.find(x => x.username === username);
-    if (member !== undefined) { return of(member); }
+    const member = [...this.memberCache.values()]
+      .reduce((arr, el) => arr.concat(el.result), [])
+      .find(x => x.username === username);
+
+    if (member) {
+      return of(member);
+    }
+
     return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
 
@@ -80,6 +107,5 @@ export class MembersService {
       .append('pageSize', pageSize.toString());
 
     return params;
-
   }
 }
