@@ -30,14 +30,15 @@ import {TimeagoModule} from "ngx-timeago";
     TimeagoModule.forRoot(),
     ReactiveFormsModule
   ],
-  exports: [
-    FormsModule,
-    CommonModule,
-    SharedModule,
-    RouterModule,
-    PaginationModule,
-    TimeagoModule,
-    ReactiveFormsModule
-  ]
+    exports: [
+        FormsModule,
+        CommonModule,
+        SharedModule,
+        RouterModule,
+        PaginationModule,
+        TimeagoModule,
+        ReactiveFormsModule,
+        MemberCardComponent
+    ]
 })
 export class MembersModule { }

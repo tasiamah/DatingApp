@@ -109,12 +109,12 @@ export class MembersService {
     return params;
   }
 
-  addLike(username: string) {
-    return this.http.post(this.baseUrl + 'likes/' + username, {})
+  public addLike(username: string): Observable<object> {
+    return this.http.post(this.baseUrl + 'likes/' + username, {});
   }
 
-  private getLikes(predicate: string) {
-    return this.http.get(this.baseUrl + 'likes?=' + predicate);
+  public getLikes(predicate: string): Observable<Partial<Member[]>>{
+    return this.http.get<Partial<Member[]>>(this.baseUrl + 'likes?predicate=' + predicate);
   }
 
 }
