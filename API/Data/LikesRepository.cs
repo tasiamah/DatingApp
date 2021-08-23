@@ -1,13 +1,16 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
 using API.Extensions;
 using API.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using ILikesRepository = API.Interfaces.ILikesRepository;
 
 namespace API.Data
 {
-    public class LikesRepository: ILikedRepository, ILikesRepository
+    public class LikesRepository : ILikesRepository
     {
         private readonly DataContext _context;
 
@@ -15,20 +18,41 @@ namespace API.Data
         {
             _context = context;
         }
-        
-        public Task<UserLike> GetUserLike(int sourceId, int likedUserId)
-        {
-            throw new System.NotImplementedException();
-        }
 
-        public Task<AppUser> GetUserWithLikes(int userId)
-        {
-            throw new System.NotImplementedException();
-        }
+        public async Task<UserLike> GetUserLike(int sourceId, int likedUserId) =>
+            await _context.Likes.FindAsync(sourceId, likedUserId);
 
-        public Task<IEnumerable<LikeDto>> GetUserLikes(string predicate, int userId)
+        public async Task<AppUser> GetUserWithLikes(int userId) =>
+            await _context.Users
+                .Include(x => x.LikedUsers)
+                .FirstOrDefaultAsync(x => x.Id == userId);
+
+        public async Task<IEnumerable<LikeDto>> GetUserLikes(string predicate, int userId)
         {
-            throw new System.NotImplementedException();
+            var users = _context.Users.OrderBy(x => x.UserName).AsQueryable();
+            var likes = _context.Likes.AsQueryable();
+
+            if (predicate == "liked")
+            {
+                likes = likes.Where(like => like.SourceUserId == userId);
+                users = likes.Select(like => like.LikedUser);
+            }
+
+            if (predicate == "likedBy")
+            {
+                likes = likes.Where(like => like.LikedUserId == userId);
+                users = likes.Select(like => like.SourceUser);
+            }
+
+            return await users.Select(user => new LikeDto
+            {
+                Username = user.UserName,
+                KnownAs = user.KnownAs,
+                Age = user.DateOfBirth.CalculateAge(),
+                PhotoUrl = user.Photos.FirstOrDefault(x => x.IsMain).Url,
+                City = user.City,
+                Id = user.Id
+            }).ToListAsync();
         }
     }
 }

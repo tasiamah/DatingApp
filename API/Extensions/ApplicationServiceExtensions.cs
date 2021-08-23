@@ -27,8 +27,5 @@ namespace API.Extensions
             return services;
         }
     }
-
-    public interface ILikesRepository
-    {
-    }
+    
 }
